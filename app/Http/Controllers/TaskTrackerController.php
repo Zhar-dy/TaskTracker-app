@@ -27,8 +27,9 @@ class TaskTrackerController extends Controller
     }
     public function edit(TaskTracker $task){
         $this->authorize('edit',$task);
+        return view('task.update', compact('task'));
     }
-  
+
   public function update(TaskTrackerRequest $request, TaskTracker $task){
    $this->authorize('edit',$task);
         $task->update([
