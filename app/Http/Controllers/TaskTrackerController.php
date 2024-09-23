@@ -26,9 +26,11 @@ class TaskTrackerController extends Controller
         return redirect()->route('home');
     }
     public function edit(TaskTracker $task){
-        return view('task.update', compact('task'));
+        $this->authorize('edit',$task);
     }
-    public function update(TaskTrackerRequest $request, TaskTracker $task){
+  
+  public function update(TaskTrackerRequest $request, TaskTracker $task){
+   $this->authorize('edit',$task);
         $task->update([
             'user_id' => auth()->user()->id,
             'title' => $request->title,
@@ -39,6 +41,7 @@ class TaskTrackerController extends Controller
         return redirect()->route('home');
     }
     public function destroy(TaskTracker $task){
+        $this->authorize('delete',$task);
         $task->delete();
         return redirect()->route('home');
     }
