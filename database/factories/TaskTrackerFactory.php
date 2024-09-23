@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User;
+use App\Models\TaskTracker;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
@@ -11,7 +12,7 @@ use App\Models\User;
 class TaskTrackerFactory extends Factory
 {
 
-    protected $model = "TaskTracker";
+    protected $model = TaskTracker::class;
     /**
      * Define the model's default state.
      *
