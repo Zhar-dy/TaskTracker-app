@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\TaskTracker;
+use App\Http\Requests\TaskTrackerRequest;
+
 
 
 class TaskTrackerController extends Controller
@@ -12,7 +14,7 @@ class TaskTrackerController extends Controller
     public function create(){
         return view('task.create');
     }
-    public function store(Request $request){
+    public function store(TaskTrackerRequest $request){
         TaskTracker::create([
             'user_id' => auth()->user()->id,
             'title' => $request->title,
@@ -25,10 +27,10 @@ class TaskTrackerController extends Controller
     }
     public function edit(TaskTracker $task){
         $this->authorize('edit',$task);
-        return view('task.update', compact('task'));
     }
-    public function update(Request $request, TaskTracker $task){
-        $this->authorize('edit',$task);
+  
+  public function update(TaskTrackerRequest $request, TaskTracker $task){
+   $this->authorize('edit',$task);
         $task->update([
             'user_id' => auth()->user()->id,
             'title' => $request->title,
