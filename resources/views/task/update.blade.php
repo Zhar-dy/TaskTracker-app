@@ -32,8 +32,8 @@
                         <label for="inputsize" class="form-label">Status</label>
                         <div class="col-md-6">
                             <select name="status" class="form-select" aria-label= "Default select example">
-                                <option value = "in progress"->{{__('In Progress')}}</option>
-                                <option value = "completed"->{{__('Completed')}}</option>
+                                <option value = "in progress" {{ $task->status == 'in progress' ? 'selected' : '' }}>{{__('In Progress')}}</option>
+                                <option value = "completed"  {{ $task->status == 'completed' ? 'selected' : '' }}>{{__('Completed')}}</option>
                             </select>
                         </div>
 
@@ -42,9 +42,9 @@
                         <label for="inputprice" class="form-label">Priority</label>
                         <div class="col-md-6">
                             <select name="priority" class="form-select" aria-label= "Default select example">
-                                <option value = "low"->{{__('Low')}}</option>
-                                <option value = "medium"->{{__('Medium')}}</option>
-                                <option value = "high"->{{__('High')}}</option>
+                                <option value = "low" {{ $task->priority == 'low' ? 'selected' : '' }}>{{__('Low')}}</option>
+                                <option value = "medium" {{ $task->priority == 'medium' ? 'selected' : '' }}>{{__('Medium')}}</option>
+                                <option value = "high" {{ $task->priority == 'high' ? 'selected' : '' }}>{{__('High')}}</option>
                             </select>
                         </div>
                         @error('price')
